@@ -9,6 +9,8 @@ require_once './components/head.html';
 
   <?php
   require_once './components/header.php';
+  require_once './components/feedback.modal.html';
+  require_once './components/confirm.feedback.modal.html';
   ?>
 
   <main class="main position-relative">
@@ -478,6 +480,10 @@ require_once './components/head.html';
       loginSignupForm.classList.add('d-flex');
     })
   </script>
+
+  <!-- Bootstrap Bundle (includes Popper.js) -->
+  <script src="./assets/vendor/jQuery-3.7.1/jquery-3.7.1.min.js"></script>
+  <script src="./assets/js/user.jQuery.js"></script>
 
 </body>
 

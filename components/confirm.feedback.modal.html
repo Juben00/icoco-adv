@@ -1,0 +1,76 @@
+<!-- Confirmation Modal -->
+<div
+  class="modal fade"
+  id="confirmfeedbackModal"
+  tabindex="-1"
+  aria-labelledby="confirmfeedbackModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-light">
+      <!-- Modal Header -->
+      <div class="modal-header border-0 justify-content-center">
+        <img
+          alt="Company logo"
+          class="img-fluid"
+          id="confirmfeedbackModalLogo"
+          width="100"
+          height="100"
+        />
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body text-center">
+        <h2 class="modal-title fs-4 fw-bold" id="confirmfeedbackModalLabel">Confirmation</h2>
+        <p class="text-muted" id="confirmfeedbackModalMessage">
+          <!-- Message goes here -->
+        </p>
+      </div>
+      <!-- Modal Footer -->
+      <div class="modal-footer border-0 justify-content-center">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="confirmcancelButton"
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="confirmButton"
+        >
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const confirmModal = new bootstrap.Modal(document.getElementById("confirmfeedbackModal"));
+  const confirmModalMessage = document.getElementById("confirmfeedbackModalMessage");
+  const confirmCancelButton = document.getElementById("confirmcancelButton");
+  const confirmButton = document.getElementById("confirmButton");
+  const confirmModalLogo = document.getElementById("confirmfeedbackModalLogo");
+
+  // Function to show the modal with a custom message and confirm action
+  function confirmshowModal(message, confirmCallback, logo) {
+    const basePath = window.location.origin + window.location.pathname.split('/').slice(0, -1).join('/');
+    const logoPath = `${basePath}/assets/img/${logo}`;
+
+    confirmModalMessage.innerHTML = message; // Set the custom message
+    confirmModalLogo.src = logoPath; // Set the logo
+    confirmModal.show(); // Show the modal
+
+    // Reset the confirm button's onclick to avoid multiple bindings
+    confirmButton.onclick = function () {
+      confirmModal.hide(); // Hide the modal
+      if (confirmCallback) confirmCallback(); // Execute the action if provided
+    };
+
+    // Cancel button hides the modal without action
+    confirmCancelButton.onclick = function () {
+      confirmModal.hide(); // Hide the modal
+    };
+  }
+</script>

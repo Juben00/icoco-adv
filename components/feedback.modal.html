@@ -1,0 +1,66 @@
+<!-- Feedback Modal -->
+<div
+  class="modal fade"
+  id="feedbackModal"
+  tabindex="-1"
+  aria-labelledby="feedbackModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-light">
+      <!-- Modal Header -->
+      <div class="modal-header border-0 justify-content-center">
+        <img
+          alt="Company logo"
+          class="img-fluid"
+          id="feedbackModalLogo"
+          width="100"
+          height="100"
+        />
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body text-center">
+        <h2 class="modal-title fs-4 fw-bold" id="feedbackModalLabel">Feedback</h2>
+        <p class="text-muted" id="feedbackModalMessage">
+          <!-- Message goes here -->
+        </p>
+      </div>
+      <!-- Modal Footer -->
+      <div class="modal-footer border-0 justify-content-center">
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="feedbackModalButton"
+        >
+          Okay
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Bootstrap Modal Initialization
+const modalElement = document.getElementById("feedbackModal");
+const feedbackModal = new bootstrap.Modal(modalElement);
+const modalMessage = document.getElementById("feedbackModalMessage");
+const btn = document.getElementById("feedbackModalButton");
+const modalLogo = document.getElementById("feedbackModalLogo");
+
+// Function to show the modal with a custom message
+function showModal(message, callback = () => {}, logo) {
+  const basePath = window.location.origin + window.location.pathname.split('/').slice(0, -1).join('/');
+  const logoPath = `${basePath}/assets/img/${logo}`;
+
+  modalMessage.innerHTML = message; // Set the custom message
+  modalLogo.src = logoPath; // Set the logo
+  feedbackModal.show(); // Show the modal
+
+  // Dynamically assign the click handler for the "Okay" button
+  btn.onclick = function () {
+    callback(); // Execute the callback if provided
+    feedbackModal.hide(); // Hide the modal
+  };
+}
+
+</script>
