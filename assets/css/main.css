@@ -129,6 +129,25 @@ h6 {
   animation: php-email-form-loading 1s linear infinite;
 }
 
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(12, 12, 12, 0.9);
+    color: white;
+    font-size: 16px;
+    font-weight: semi-bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
+    z-index: 100;
+}
+
+.dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
 @keyframes php-email-form-loading {
   0% {
     transform: rotate(0deg);
@@ -205,6 +224,7 @@ h6 {
     order: 3;
   }
 }
+
 
 .scrolled .header {
   box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.1);

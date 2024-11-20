@@ -15,6 +15,12 @@ $(document).ready(function () {
         signup(formElement);
     });
 
+    $('#profileLink').on('click', function (e) {
+        e.preventDefault();
+        const link = $(this).attr('data-url');
+        menuNavigation(link);
+    });
+
     function signup(formElement) {
         let form = new FormData(formElement[0]);
         $.ajax({
@@ -59,6 +65,10 @@ $(document).ready(function () {
                 }
             },
             });
+    }
+    
+    function menuNavigation(link) {
+        window.location.href = link;
     }
 
 });
